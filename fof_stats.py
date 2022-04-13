@@ -152,7 +152,8 @@ def handle_champ_kill(event: lol.match.TimelineEventData, match_stats: MatchStat
     except AttributeError:
         pass
 
-    match_stats.participant_stats[event.killer_id].kills += 1
+    if event.killer_id:
+        match_stats.participant_stats[event.killer_id].kills += 1
     match_stats.participant_stats[event.victim_id].deaths += 1
 
 
